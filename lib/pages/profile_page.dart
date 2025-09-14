@@ -13,9 +13,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String? name = "Yudistira faeyza";
-  String? email = "faeyzayudistira07@gmail.com";
-  String? phone = "085776497495";
+  String? name = "Zainul Arkaan ";
+  String? email = "zainaril13@gmail.com";
+  String? phone = "081234567890";
   String? imagePath;
 
   @override
@@ -55,9 +55,10 @@ class _ProfilePageState extends State<ProfilePage> {
           Center(
             child: CircleAvatar(
               radius: 50,
-              backgroundImage: imagePath != null && File(imagePath!).existsSync()
-                  ? FileImage(File(imagePath!)) as ImageProvider
-                  : const AssetImage("assets/profile.png"),
+              backgroundImage:
+                  imagePath != null && File(imagePath!).existsSync()
+                      ? FileImage(File(imagePath!)) as ImageProvider
+                      : const AssetImage("assets/profile.png"),
             ),
           ),
 
