@@ -27,24 +27,17 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter E-Commerce App',
+        title: 'StyleHub',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple,
-            primary: Colors.deepPurple,
-            secondary: Colors.amber,
+            seedColor: const Color(0xFF6C63FF),
+            primary: const Color(0xFF6C63FF),
           ),
           appBarTheme: const AppBarTheme(
             elevation: 0,
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.white,
             foregroundColor: Colors.black,
-          ),
-          textTheme: const TextTheme(
-            titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-            bodyLarge: TextStyle(fontSize: 16),
-            bodyMedium: TextStyle(fontSize: 14),
           ),
         ),
         home: const LoginPage(),
@@ -74,34 +67,52 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_selectedIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) =>
-            setState(() => _selectedIndex = index),
-        elevation: 8,
-        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        destinations: const [
-          NavigationDestination(
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: (index) => setState(() => _selectedIndex = index),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+          selectedItemColor: const Color(0xFF6C63FF),
+          unselectedItemColor: Colors.grey.shade600,
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
+          items: const [
+            BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home, color: Colors.deepPurple),
-              label: 'Beranda'),
-          NavigationDestination(
+              activeIcon: Icon(Icons.home),
+              label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.search_outlined),
-              selectedIcon: Icon(Icons.search, color: Colors.deepPurple),
-              label: 'Cari'),
-          NavigationDestination(
+              activeIcon: Icon(Icons.search),
+              label: 'Cari',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart_outlined),
-              selectedIcon: Icon(Icons.shopping_cart, color: Colors.deepPurple),
-              label: 'Keranjang'),
-          NavigationDestination(
+              activeIcon: Icon(Icons.shopping_cart),
+              label: 'Keranjang',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.favorite_outline),
-              selectedIcon: Icon(Icons.favorite, color: Colors.deepPurple),
-              label: 'Favorit'),
-          NavigationDestination(
+              activeIcon: Icon(Icons.favorite),
+              label: 'Favorit',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
-              selectedIcon: Icon(Icons.person, color: Colors.deepPurple),
-              label: 'Profil'),
-        ],
+              activeIcon: Icon(Icons.person),
+              label: 'Profil',
+            ),
+          ],
+        ),
       ),
     );
   }
